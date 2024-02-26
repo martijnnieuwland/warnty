@@ -3,11 +3,14 @@ import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QPushButton, QLabel, QLineEdit, QVBoxLayout, QTextEdit, QAction, QMenu
 from random import choice
+# from ui_warnty import Ui_Dialog
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
         self.show()
 
         self.setContextMenuPolicy(Qt.CustomContextMenu)
