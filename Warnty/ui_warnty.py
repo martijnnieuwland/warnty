@@ -16,21 +16,19 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QDateEdit, QDialog, QFormLayout,
-    QHBoxLayout, QHeaderView, QLabel, QLineEdit,
-    QPushButton, QScrollArea, QSizePolicy, QSpinBox,
-    QSplitter, QTableWidget, QTableWidgetItem, QTextEdit,
-    QVBoxLayout, QWidget)
+    QGridLayout, QHBoxLayout, QHeaderView, QLabel,
+    QLineEdit, QPushButton, QScrollArea, QSizePolicy,
+    QSpinBox, QSplitter, QTableWidget, QTableWidgetItem,
+    QTextEdit, QVBoxLayout, QWidget)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
         Dialog.resize(1037, 763)
-        self.splitter_2 = QSplitter(Dialog)
-        self.splitter_2.setObjectName(u"splitter_2")
-        self.splitter_2.setGeometry(QRect(20, 10, 991, 731))
-        self.splitter_2.setOrientation(Qt.Vertical)
-        self.splitter = QSplitter(self.splitter_2)
+        self.gridLayout = QGridLayout(Dialog)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.splitter = QSplitter(Dialog)
         self.splitter.setObjectName(u"splitter")
         self.splitter.setOrientation(Qt.Horizontal)
         self.widget = QWidget(self.splitter)
@@ -139,13 +137,17 @@ class Ui_Dialog(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 596, 391))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 609, 403))
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.splitter.addWidget(self.scrollArea)
-        self.splitter_2.addWidget(self.splitter)
-        self.tableWidget = QTableWidget(self.splitter_2)
+
+        self.gridLayout.addWidget(self.splitter, 0, 0, 1, 1)
+
+        self.tableWidget = QTableWidget(Dialog)
         self.tableWidget.setObjectName(u"tableWidget")
-        self.splitter_2.addWidget(self.tableWidget)
+
+        self.gridLayout.addWidget(self.tableWidget, 1, 0, 1, 1)
+
 
         self.retranslateUi(Dialog)
 
